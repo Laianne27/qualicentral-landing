@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QualiHub | Gestão de Qualidade Inteligente</title>
+    <!-- Tailwind CSS (via CDN para facilitar o uso em arquivo único) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Configuração do Tailwind para usar a fonte Inter e as cores da marca -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#e0f2fe', // sky-100
+                            DEFAULT: '#0284c7', // sky-600
+                            dark: '#0369a1', // sky-700
+                        },
+                        accent: {
+                            DEFAULT: '#f97316', // orange-500
+                            dark: '#ea580c', // orange-600
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Pequenos ajustes para a animação do mockup */
+        .mockup-window {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+        }
+        .mockup-header {
+            background-color: #e5e7eb;
+            padding: 0.5rem 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background-color: #ef4444; }
+        .dot-yellow { background-color: #eab308; }
+        .dot-green { background-color: #22c55e; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-white antialiased">
+
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-10 h-10 bg-brand text-white rounded-lg flex items-center justify-center text-xl font-bold shadow-md">
+                        <i class="fa-solid fa-q"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">QualiHub</span>
+                </div>
+                
+                <!-- Links Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beneficios" class="text-slate-600 hover:text-brand font-medium transition-colors">Benefícios</a>
+                    <a href="#como-funciona" class="text-slate-600 hover:text-brand font-medium transition-colors">Como Funciona</a>
+                    <a href="#contato" class="text-slate-600 hover:text-brand font-medium transition-colors">Lista de Espera</a>
+                    <!-- Botão para o App Streamlit -->
+                    <a href="https://sistemaqualidade.streamlit.app/" target="_blank" rel="noopener noreferrer" class="bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        Acessar Sistema <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Menu Mobile (Hamburguer) - Visível apenas em telas pequenas -->
+                <div class="md:hidden flex items-center">
+                    <a href="https://sistemaqualidade.streamlit.app/" target="_blank" class="bg-brand text-white px-4 py-2 rounded-full text-sm font-medium mr-4">Entrar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (A Primeira Impressão) -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
+        <!-- Elementos decorativos de fundo -->
+        <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full overflow-hidden -z-10">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-light rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+            <div class="absolute top-40 -left-40 w-96 h-96 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
+                Centralize a Qualidade. <br class="hidden md:block">
+                <span class="text-brand">Elimine a Burocracia.</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-600 mb-10">
+                O QualiHub é a plataforma web que digitaliza a gestão da qualidade na indústria de alimentos. Transforme planilhas fragmentadas em inteligência de dados ágil, acessível e segura, do pequeno negócio à grande indústria.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#contato" class="w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accent-dark text-white rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Entrar para a Lista de Espera
+                </a>
+                <a href="https://sistemaqualidade.streamlit.app/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-white border-2 border-slate-200 hover:border-brand hover:text-brand text-slate-700 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play"></i> Testar o MVP agora
+                </a>
+            </div>
+            
+            <p class="mt-6 text-sm text-slate-500 font-medium">
+                <i class="fa-solid fa-check-circle text-green-500 mr-1"></i> Não requer instalação. 100% Web.
+            </p>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE BENEFÍCIOS (Problema vs Solução) -->
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-2">Por que o QualiHub?</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Chega de se perder em papéis e planilhas desconectadas.</h3>
+                <p class="text-lg text-slate-600">
+                    Nas indústrias de alimentos, o excesso de sistemas ou a falta deles geram retrabalho e riscos de compliance. Nós resolvemos isso integrando toda a sua cadeia de qualidade.
+                </p>
+            </div>
+
+            <!-- Grid de Benefícios -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefício 1 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-light hover:shadow-lg transition-all">
+                    <div class="w-14 h-14 bg-brand-light text-brand rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">100% Digital e Acessível</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Interface intuitiva e adaptável a celulares. Ideal para apontamentos diretos no chão de fábrica ou na doca de recebimento de insumos.
+                    </p>
+                </div>
+
+                <!-- Benefício 2 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-light hover:shadow-lg transition-all">
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Tudo em um Só Lugar</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Do cadastro de fornecedores (já ativo!) à gestão de laudos e não conformidades. A sua <span class="font-semibold">única fonte de verdade</span>.
+                    </p>
+                </div>
+
+                <!-- Benefício 3 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-light hover:shadow-lg transition-all">
+                    <div class="w-14 h-14 bg-orange-100 text-accent rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Prevenção Inteligente</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Esqueça a checagem manual. O sistema realiza automação de análises e emite alertas em tempo real. Identifique desvios antes que virem prejuízo.
+                    </p>
+                </div>
+
+                <!-- Benefício 4 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-light hover:shadow-lg transition-all">
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Auditorias sem Estresse</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Geração de relatórios de conformidade, histórico de fornecedores e rastreabilidade total de lotes com apenas alguns cliques.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO COMO FUNCIONA (Prova Social / Demonstração Visual) -->
+    <section id="como-funciona" class="py-20 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <!-- Texto explicativo -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-accent font-bold tracking-wide uppercase text-sm mb-2">Ecossistema Integrado</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6">Projetado por quem entende a rotina real da indústria.</h3>
+                    <p class="text-slate-300 text-lg mb-8 leading-relaxed">
+                        Sabemos que o chão de fábrica não tem tempo a perder. Com o QualiHub, conectamos todos os elos da sua cadeia de suprimentos em um fluxo perfeito:
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand flex items-center justify-center font-bold shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-xl">O Fornecedor agenda a entrega</h4>
+                                <p class="text-slate-400">Dados do veículo, motorista e previsão de chegada cadastrados previamente no portal externo.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand flex items-center justify-center font-bold shrink-0">2</div>
+                            <div>
+                                <h4 class="font-bold text-xl">O Analista insere a qualidade</h4>
+                                <p class="text-slate-400">Ao receber o lote (ex: milho), os testes de umidade e pureza são inseridos diretamente no tablet da doca.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand flex items-center justify-center font-bold shrink-0">3</div>
+                            <div>
+                                <h4 class="font-bold text-xl">O Gestor toma a decisão</h4>
+                                <p class="text-slate-400">Aprovações, rejeições e laudos de não conformidade gerados automaticamente baseados em parâmetros do sistema.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Mockup visual do sistema (Representação do Streamlit) -->
+                <div class="lg:w-1/2 w-full mt-10 lg:mt-0 relative">
+                    <!-- Elemento decorativo atrás do mockup -->
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand to-accent opacity-30 blur-2xl rounded-full"></div>
+                    
+                    <div class="mockup-window relative z-10 w-full transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <!-- Header do navegador falso -->
+                        <div class="mockup-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                            <div class="ml-4 text-xs text-slate-500 font-mono bg-white px-2 rounded w-full text-center">sistemaqualidade.streamlit.app</div>
+                        </div>
+                        <!-- Corpo do mockup (simulando a interface limpa do Streamlit) -->
+                        <div class="bg-white p-6 text-slate-800">
+                            <div class="border-b pb-4 mb-4">
+                                <h4 class="text-2xl font-bold flex items-center gap-2"><i class="fa-solid fa-box text-slate-400"></i> Cadastro de Fornecedores</h4>
+                                <p class="text-slate-500 text-sm">Preencha os dados abaixo para cadastrar um novo fornecedor.</p>
+                            </div>
+                            
+                            <div class="bg-green-50 text-green-700 p-3 rounded mb-4 text-sm font-medium border border-green-200">
+                                ✅ Fornecedor cadastrado com sucesso!
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 mb-4 opacity-70">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-500 mb-1">Nome da empresa</label>
+                                    <div class="h-8 bg-slate-100 rounded border border-slate-200 w-full"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-500 mb-1">CNPJ</label>
+                                    <div class="h-8 bg-slate-100 rounded border border-slate-200 w-full"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="h-10 w-24 bg-brand rounded shadow-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE CAPTAÇÃO (O Formulário) -->
+    <section id="contato" class="py-24 bg-brand-light relative">
+        <!-- SVG Wave Top -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none transform rotate-180">
+            <svg class="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#0f172a"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden md:flex">
+                <!-- Lado Esquerdo (Texto) -->
+                <div class="md:w-5/12 bg-brand p-10 text-white flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 opacity-10 text-[15rem]">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 relative z-10">Dê o primeiro passo.</h3>
+                    <p class="text-brand-light mb-8 relative z-10 leading-relaxed">
+                        Quer ser um dos primeiros a transformar a qualidade da sua indústria? Inscreva-se para garantir acesso antecipado aos novos módulos de IA e Análise de Recebimento.
+                    </p>
+                    <ul class="space-y-3 relative z-10">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-300"></i> Suporte prioritário</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-300"></i> Sugira novas funções</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-300"></i> Grátis durante o programa</li>
+                    </ul>
+                </div>
+                
+                <!-- Lado Direito (Formulário) -->
+                <div class="md:w-7/12 p-10">
+                    
+                    <!-- Mensagem de Sucesso (Oculta por padrão) -->
+                    <div id="mensagem-sucesso" class="hidden h-full flex flex-col items-center justify-center text-center py-10">
+                        <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-3xl mb-4">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-2">Inscrição Confirmada!</h4>
+                        <p class="text-slate-600 mb-6">Obrigado pelo interesse. Em breve entraremos em contato com as novidades do QualiHub.</p>
+                        <button onclick="resetarFormulario()" class="text-brand font-semibold hover:underline">Enviar outra resposta</button>
+                    </div>
+
+                    <!-- O Formulário real -->
+                    <form id="form-leads" onsubmit="enviarFormulario(event)" class="space-y-5">
+                        <h4 class="text-2xl font-bold text-slate-900 mb-6">Lista de Espera VIP</h4>
+                        
+                        <div>
+                            <label for="nome" class="block text-sm font-semibold text-slate-700 mb-1">Nome Completo *</label>
+                            <input type="text" id="nome" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-colors" placeholder="Ex: Maria Silva">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-slate-700 mb-1">E-mail Profissional *</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-colors" placeholder="maria@industria.com.br">
+                        </div>
+                        
+                        <div>
+                            <label for="tamanho" class="block text-sm font-semibold text-slate-700 mb-1">Porte da Empresa *</label>
+                            <select id="tamanho" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none bg-white transition-colors">
+                                <option value="" disabled selected>Selecione uma opção...</option>
+                                <option value="pequena">Pequena (até 49 funcionários)</option>
+                                <option value="media">Média (50 a 249 funcionários)</option>
+                                <option value="grande">Grande (250+ funcionários)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-6 rounded-lg transition-colors flex justify-center items-center gap-2 mt-6">
+                            Quero Acesso Antecipado <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <p class="text-xs text-slate-400 text-center mt-4">
+                            Ao se inscrever, você concorda com nossa política de privacidade. Seus dados estão seguros.
+                        </p>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ (Footer) -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                
+                <div class="flex items-center gap-2 mb-4 md:mb-0">
+                    <div class="w-8 h-8 bg-slate-800 text-slate-300 rounded flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-q"></i>
+                    </div>
+                    <span class="font-bold text-xl text-white">QualiHub</span>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://github.com/Laianne27/Sistema_Qualidade" target="_blank" class="hover:text-white transition-colors flex items-center gap-2">
+                        <i class="fa-brands fa-github text-xl"></i>
+                        <span class="text-sm font-medium">Ver código no GitHub</span>
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="border-t border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2026 QualiHub. Projeto desenvolvido para o Santander X Explorer.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para controle do comportamento do formulário -->
+    <script>
+        function enviarFormulario(event) {
+            // Evita que a página recarregue ao enviar o formulário
+            event.preventDefault();
+            
+            // Aqui, no futuro, você conectaria com uma API (ex: Mailchimp, Zapier ou seu próprio banco de dados)
+            // Por enquanto, apenas simulamos o sucesso escondendo o formulário e mostrando a mensagem
+            
+            document.getElementById('form-leads').classList.add('hidden');
+            document.getElementById('mensagem-sucesso').classList.remove('hidden');
+        }
+
+        function resetarFormulario() {
+            // Volta o formulário ao estado inicial
+            document.getElementById('form-leads').reset();
+            document.getElementById('mensagem-sucesso').classList.add('hidden');
+            document.getElementById('form-leads').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
